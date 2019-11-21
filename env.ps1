@@ -6,7 +6,7 @@
 [System.Environment]::GetEnvironmentVariables() 的可选范围有3个:
 Machine, Process, User, 暂时还不清楚 Process 表示的具体范围, 可能精确到某个进程???
 #>
-function GetEnvs {
+function EnvList {
     param (
         $scope ## 默认为空
     )
@@ -21,7 +21,7 @@ function GetEnvs {
 获取指定的环境变量值.
 默认为用户级别, 如需查看系统级别, 需要添加 sys 参数(注意这是函数参数, 而不是命令行选项...)
 #>
-function GetEnv {
+function EnvGet {
     param (
         ## 目标变量名, 默认为 path
         $key='path', 
@@ -35,13 +35,15 @@ function GetEnv {
     }
 }
 
-function SetEnv {
+<#
+3个参数, 第3个参数 val 设置为空则表示将此环境变量删除.
+#>
+function EnvSet {
     param (
         $key = '',
         $val = '',
         $scope = 'user'
     )
-    ## 将 val 设置为空表示将此环境变量删除.
     ## if (($key -eq '') -or ($val -eq '')) {
     if ($key -eq '') {
         return
