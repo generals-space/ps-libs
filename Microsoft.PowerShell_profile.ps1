@@ -47,12 +47,12 @@ git, go get 可用, 但是只能在powershell终端中使用
 function enproxy {
     param ()
     
-    SetEnv http_proxy http://127.0.0.1:1081;
-    SetEnv https_proxy http://127.0.0.1:1081;
+    EnvSet http_proxy http://127.0.0.1:1081;
+    EnvSet https_proxy http://127.0.0.1:1081;
 }
 function deproxy {
     param ()
     
-    SetEnv http_proxy 
-    SetEnv https_proxy 
+    EnvSet http_proxy 
+    EnvSet https_proxy 
 }
