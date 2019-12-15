@@ -33,3 +33,9 @@ if ($exist -eq 0) {
     ## start-job -scriptblock {ssh forward-rdp}
     Start-Process ssh -ArgumentList 'forward-rdp' -WindowStyle Hidden
 }
+
+$exist = (get_ssh_proc forward-vnc | Measure-Object).Count
+if ($exist -eq 0) {
+    ## start-job -scriptblock {ssh forward-vnc}
+    Start-Process ssh -ArgumentList 'forward-vnc' -WindowStyle Hidden
+}
